@@ -1,0 +1,11 @@
+environment_name = "demo"
+
+access_key = AWS_ACCESS_KEY
+secret_key = AWS_SECRET_KEY
+aws_session_token = AWS_SESSION_TOKEN
+
+region = "ap-southeast-1"
+availability_zones = ["ap-southeast-1a", "ap-southeast-1b", "ap-southeast-1c"]
+
+hosted_zone = "pas.jameslee.cloud."
+
