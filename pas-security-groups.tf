@@ -28,7 +28,7 @@ resource "aws_security_group" "web-lb" {
   { "Name" = "${var.environment_name}-web-lb-sg" },
   )
 }
-/*
+
 resource "aws_security_group" "ssh-lb" {
   name   = "${var.environment_name}-ssh-lb-sg"
   vpc_id = aws_vpc.vpc.id
@@ -52,7 +52,7 @@ resource "aws_security_group" "ssh-lb" {
   { "Name" = "${var.environment_name}-ssh-lb-sg" },
   )
 }
-
+/*
 resource "aws_security_group" "tcp-lb" {
   name   = "${var.environment_name}-tcp-lb-sg"
   vpc_id = aws_vpc.vpc.id

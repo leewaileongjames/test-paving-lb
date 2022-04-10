@@ -64,6 +64,35 @@ resource "aws_lb_target_group" "web-443" {
 
 #############################################
 
+resource "aws_elb" "bar" {
+  name               = "${var.environment_name}-ssh-lb"
+  #availability_zones = ["ap-southeast-1a", "ap-southeast-1b", "ap-southeast-1c"]
+  subnets = aws_subnet.public-subnet[*].id
+  security_groups = [aws_security_group.ssh-lb.id]
+
+  listener {
+    instance_port     = 2222
+    instance_protocol = "tcp"
+    lb_port           = 2222
+    lb_protocol       = "tcp"
+  }
+
+  health_check {
+    healthy_threshold   = 6
+    unhealthy_threshold = 3
+    timeout             = 3
+    target              = "TCP:2222"
+    interval            = 5
+  }
+
+  cross_zone_load_balancing   = true
+  idle_timeout                = 60
+  connection_draining         = true
+  connection_draining_timeout = 300
+
+}
+
+
 /*
 # SSH Load Balancer
 
